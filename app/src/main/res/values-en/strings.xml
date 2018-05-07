@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OAD</string>
+    <string name="data_loading">Data preparation</string>
+    <string name="upgrading">Do not quit during the upgrade!</string>
+    <string name="start_promote">Switch to upgrade mode</string>
+    <string name="promote_error">Failed to upgrade and will exit soon!</string>
+    <string name="promote_success">upgrade successful and is being restarted!</string>
+
+
+</resources>

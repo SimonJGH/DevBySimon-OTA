@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">OAD</string>
+    <string name="data_loading">数据准备中</string>
+    <string name="upgrading">升级中，请勿退出!</string>
+    <string name="start_promote">切换至升级模式</string>
+    <string name="promote_error">升级失败,即将退出!</string>
+    <string name="promote_success">升级成功,正在重启!</string>
+
+</resources>
