@@ -49,7 +49,7 @@ public class OtaUpgradeActivity extends Activity implements OtaSerialListener, O
                 case 2:
                     boolean b = mManager.writeOTABodyPre();
                     if (b) {
-                        startPromote();
+                        startUpgrade();
                     }
                     break;
             }
@@ -179,8 +179,13 @@ public class OtaUpgradeActivity extends Activity implements OtaSerialListener, O
                     Log.i("OTA", "写入");
                 }
             });
-            startPromote();
+            startUpgrade();
         }
+    }
+
+    @Override
+    public void onPromoteHeaderWriteSuccess() {
+        mHandler.sendEmptyMessageDelayed(2, 2500);
     }
 
     @Override
@@ -204,10 +209,11 @@ public class OtaUpgradeActivity extends Activity implements OtaSerialListener, O
                 }
             }
         });
-        startPromote();
+        startUpgrade();
     }
 
-    private void startPromote() {
+    /* 开始ota升级 */
+    private void startUpgrade() {
         IS_RESET = true;
         byte[] bodyData = new byte[18];
         if (blockIndex * 16 < promoteDatas.length) {
@@ -221,6 +227,7 @@ public class OtaUpgradeActivity extends Activity implements OtaSerialListener, O
         }
     }
 
+    /* ota升级成功*/
     public void otaUpgradeSuccess() {
         IS_RESET = false;
         mTv_progress.setText(R.string.promote_success);
@@ -245,11 +252,4 @@ public class OtaUpgradeActivity extends Activity implements OtaSerialListener, O
         mHandler.removeCallbacksAndMessages(null);
         mIv_oad_upgrading.clearAnimation();
     }
-
-    @Override
-    public void onPromoteHeaderWriteSuccess() {
-        mHandler.sendEmptyMessageDelayed(2, 2500);
-    }
-
-
 }
